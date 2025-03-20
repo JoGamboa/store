@@ -7,19 +7,34 @@
             </a>
             <ul class="flex space-x-6">
                 <li>
-                    <a href="#" class="block underline hover:underline" aria-current="page">Home test</a>
+                    <a 
+                    routerLink="/" 
+                    routerLinkActive="underline"
+                    [routerLinkActiveOptions]="{exact: true}"
+                    class="block hover:underline" 
+                    aria-current="page">Home
+                </a>
                 </li>
                 <li>
-                    <a href="#" class="block hover:underline">About</a>
+                    <a 
+                    routerLink="/about" 
+                    routerLinkActive="underline" 
+                    class="block hover:underline">About
+                </a>
                 </li>
                 <li>
-                    <a href="#" class="block hover:underline">Services</a>
+                    <a 
+                    routerLink="/services" 
+                    routerLinkActive="underline" 
+                    class="block hover:underline">Services
+                </a>
                 </li>
             </ul>
         </div>
         <div class="flex items-center">
             <button class="p-2 border rounded relative" (click)="toogleSideMenu()">
-                <div class="absolute -top-2 -left-2 rounded h-5 w-5 bg-black text-white text-xs">{{ cart().length }}</div>
+                <div class="absolute -top-2 -left-2 rounded h-5 w-5 bg-black text-white text-xs">{{ cart().length }}
+                </div>
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                     stroke="currentColor" class="w-6 h-6">
                     <path stroke-linecap="round" stroke-linejoin="round"
@@ -42,13 +57,13 @@
     </div>
     <div class="pt-4 flex flex-col">
         @for (product of cart(); track $index) {
-            <div class="flex justify-between items-center space-y-2">
-                <div class="flex space-x-2 items-center">
-                    <img class="w-6 h-6" [src]="product.images[0]" [alt]="product.title">
-                    <h3>{{ product.title }}</h3>
-                </div>
-                <p>{{ product.price }}</p>
+        <div class="flex justify-between items-center space-y-2">
+            <div class="flex space-x-2 items-center">
+                <img class="w-6 h-6" [src]="product.images[0]" [alt]="product.title">
+                <h3>{{ product.title }}</h3>
             </div>
+            <p>{{ product.price }}</p>
+        </div>
         }
         <div>
             <p>Total: {{ total() }}</p>
