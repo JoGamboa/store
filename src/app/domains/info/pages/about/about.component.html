@@ -1,12 +1,14 @@
 <div class="px-10">
-    <h1 class="text-lg font-bold">About</h1>
-    <p class="text-xs">Lorem ipsum dolor, <span appHighlight>sit amet consectetur adipisicing elit.</span> Excepturi ex
-        suscipit quia minima saepe id doloremque
-        deleniti libero ab, officiis necessitatibus corporis molestias odit, iure possimus at praesentium veritatis
-        voluptas?</p>
-    <p class="text-xs">Numero de clientes <app-counter [duration]="duration()" [message]="message()"
-            *ngIf="duration() > 0" /></p>
-    <div>
-        <app-wave-audio audioUrl="audio.mp3" />
-    </div>
+  <h1 class="text-lg font-bold">About</h1>
+  <p class="text-xs">Lorem ipsum dolor, <span appHighlight>sit amet consectetur adipisicing elit.</span> Excepturi ex
+  suscipit quia minima saepe id doloremque
+  deleniti libero ab, officiis necessitatibus corporis molestias odit, iure possimus at praesentium veritatis
+voluptas?</p>
+<p class="text-xs">Numero de clientes @if (duration() > 0) {
+  <app-counter [duration]="duration()" [message]="message()"
+    />
+}</p>
+<div>
+  <app-wave-audio audioUrl="audio.mp3" />
+</div>
 </div>
