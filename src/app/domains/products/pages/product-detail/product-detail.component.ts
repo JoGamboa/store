@@ -1,4 +1,4 @@
-import { Component, inject, Input, signal } from '@angular/core';
+import { Component, inject, Input, signal, OnInit } from '@angular/core';
 import { Product } from '@shared/models/product.model';
 import { ProductService } from '@shared/services/product.service';
 import { CommonModule } from '@angular/common';
@@ -8,9 +8,9 @@ import { CartService } from '@shared/services/cart.service';
   selector: 'app-product-detail',
   imports: [CommonModule],
   templateUrl: './product-detail.component.html',
-  styleUrl: './product-detail.component.css'
+  styleUrl: './product-detail.component.css',
 })
-export default class ProductDetailComponent {
+export default class ProductDetailComponent implements OnInit {
   @Input() id?: string;
   product = signal<Product | null>(null);
   cover = signal('');
@@ -20,12 +20,12 @@ export default class ProductDetailComponent {
   ngOnInit() {
     if (this.id) {
       this.productService.getProductDetail(this.id).subscribe({
-        next: (product) => {
+        next: product => {
           this.product.set(product);
           if (product.images.length > 0) {
             this.cover.set(product.images[0]);
           }
-        }
+        },
       });
     }
   }
@@ -40,5 +40,4 @@ export default class ProductDetailComponent {
       this.cartSercice.addToCart(product);
     }
   }
-
 }

@@ -1,13 +1,23 @@
-import { Component, Input, signal, SimpleChanges } from '@angular/core';
-
+import {
+  Component,
+  Input,
+  signal,
+  SimpleChanges,
+  OnChanges,
+  OnInit,
+  AfterViewInit,
+  OnDestroy,
+} from '@angular/core';
 
 @Component({
   selector: 'app-counter',
   imports: [],
   templateUrl: './counter.component.html',
-  styleUrl: './counter.component.css'
+  styleUrl: './counter.component.css',
 })
-export class CounterComponent {
+export class CounterComponent
+  implements OnChanges, OnInit, AfterViewInit, OnDestroy
+{
   @Input({ required: true }) duration = 0;
   @Input({ required: true }) message = '';
   counter = signal(0);
@@ -27,9 +37,13 @@ export class CounterComponent {
     console.log('Changes: ', changes);
 
     const duration = changes['duration'];
-    const message = changes['message'];
     if (duration && duration.currentValue !== duration.previousValue) {
-      console.log('Duration changed from', duration.previousValue, 'to', duration.currentValue);
+      console.log(
+        'Duration changed from',
+        duration.previousValue,
+        'to',
+        duration.currentValue
+      );
     }
   }
 

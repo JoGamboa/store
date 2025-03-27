@@ -1,5 +1,4 @@
-import { Component, inject, Input, signal, SimpleChanges } from '@angular/core';
-import { Product } from '../../models/product.model';
+import { Component, inject, signal } from '@angular/core';
 import { CartService } from '../../services/cart.service';
 import { RouterLinkWithHref, RouterLinkActive } from '@angular/router';
 
@@ -7,7 +6,7 @@ import { RouterLinkWithHref, RouterLinkActive } from '@angular/router';
   selector: 'app-header',
   imports: [RouterLinkWithHref, RouterLinkActive],
   templateUrl: './header.component.html',
-  styleUrl: './header.component.css'
+  styleUrl: './header.component.css',
 })
 export class HeaderComponent {
   hideSideMenu = signal(true);
@@ -16,6 +15,6 @@ export class HeaderComponent {
   total = this.cartService.total;
 
   toogleSideMenu() {
-    this.hideSideMenu.update(prevState => !prevState);
+    this.hideSideMenu.update((prevState) => !prevState);
   }
 }

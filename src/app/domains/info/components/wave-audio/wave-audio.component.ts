@@ -1,5 +1,11 @@
-import { Component, ElementRef, Input, signal, ViewChild } from '@angular/core';
-
+import {
+  Component,
+  ElementRef,
+  Input,
+  signal,
+  ViewChild,
+  AfterViewInit,
+} from '@angular/core';
 
 import WaveSurfer from 'wavesurfer.js';
 
@@ -7,10 +13,10 @@ import WaveSurfer from 'wavesurfer.js';
   selector: 'app-wave-audio',
   imports: [],
   templateUrl: './wave-audio.component.html',
-  styleUrl: './wave-audio.component.css'
+  styleUrl: './wave-audio.component.css',
 })
-export class WaveAudioComponent {
-  @Input({required: true}) audioUrl!: string;
+export class WaveAudioComponent implements AfterViewInit {
+  @Input({ required: true }) audioUrl!: string;
   @ViewChild('wave') container!: ElementRef;
   private ws!: WaveSurfer;
   isPlaying = signal(false);
